@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ccc;
+}
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    background-color: #f0ebeb;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.content {
+    width: 80%;
+    float: right;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header input {
+    padding: 5px;
+    margin-left: 20px;
+}
+.header button {
+    padding: 5px 9px;
+}
+.status {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.status div {
+    text-align: center;
+}
+.appointments, .sessions {
+    width: 48%;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.card {
+    width: 45%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.card table, .card th, .card td {
+    border: 1px solid #ddd;
+}
+.card th, .card td {
+    padding: 0 4px 8px(0, 0, 0, 0.1);
+    text-align: left;
+}
+.card button {
+    width: 100%;
+    padding: 10px;
+    background-color: #778fa9;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
