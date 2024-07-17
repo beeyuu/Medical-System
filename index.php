@@ -28,7 +28,7 @@
                         <button class="tab" onclick="Action(event, 'SignIn')">Sign In</button>
                     </div>
                     <div id="SignUp" class="SignUp">
-                        <form action="dashboard.php" method="POST">
+                        <form action="login.php" method="POST">
                             <div class="form-group">
                                 <label for="full-name">Full Name</label>
                                 <input type="text" id="full-name" name="fullName" placeholder="Full Name">
