@@ -43,8 +43,9 @@
         
             // Fetch the result
             if ($stmt->fetch()) {
+                
                 // Verify the password
-                if (password_verify($password, $hashed_password)) {
+                if (($password == $hashed_password)) {
                     // Store email in session and redirect
                     $_SESSION['email'] = $email;
                     header("Location: home/dashboard.php");
