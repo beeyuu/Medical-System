@@ -3,9 +3,7 @@
 session_start();
 
 // Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    var_dump($_SESSION['user_id']);
-    exit;
+if (!isset($_SESSION['email'])) {
     // Redirect to login page if not logged in
     header("Location: ../index.php"); // Adjust path as necessary
     exit();
@@ -15,8 +13,8 @@ if (!isset($_SESSION['user_id'])) {
 require '../dbconnect.php'; // Adjust path as necessary
 
 // Fetch user information from database based on session data
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM users WHERE id = $user_id";
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email = '$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
