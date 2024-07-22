@@ -15,7 +15,7 @@
                     <p>ZaRy Medical Center</p>
                 </div>
                 <div class="image">
-                    <!-- Image content -->
+                  
                 </div>
             </div>
             <div class="right">

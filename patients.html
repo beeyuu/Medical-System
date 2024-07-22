@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment and Notifications</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <h2>Patient</h2>
+            <p>patient@example.com</p>
+        </div>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <li><a href="#" class="tab-link active" data-target="patients">Patients</a></li>
+                    <li><a href="#" class="tab-link" data-target="appointment">Appointment</a></li>
+                    <li><a href="#" class="tab-link" data-target="doctor">Doctor</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <div id="patients" class="tab-content active">
+            <div class="header">
+                <h1>Patients</h1>
+                <input type="text" placeholder="Search Patients...">
+                <button>Add Patient</button>
+            </div>
+            <div class="patient-list" id="patient-list">
+                <!-- Patient cards will be dynamically added here -->
+            </div>
+        </div>
+        <div id="appointment" class="tab-content">
+            <div class="header">
+                <h1>Appointment</h1>
+            </div>
+            <div class="appointment-form">
+                <h2>Book an Appointment</h2>
+                <form id="appointment-form">
+                    <label for="name">Patient Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="sickness">Sickness:</label>
+                    <textarea id="sickness" name="sickness" rows="4" required></textarea>
+
+                    <label for="days">Number of Days Experiencing:</label>
+                    <input type="number" id="days" name="days" min="1" required>
+
+                    <button type="submit">Submit Appointment</button>
+                </form>
+            </div>
+        </div>
+        <div id="doctor" class="tab-content">
+            <div class="header">
+                <h1>Doctor Availability</h1>
+            </div>
+            <div class="doctor-status">
+                <h2>Doctor Status:</h2>
+                <p id="doctor-status">Checking availability...</p>
+            </div>
+            <div class="doctor-post-form">
+                <h2>Post Operation Details</h2>
+                <form id="doctor-post-form">
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" required>
+
+                    <label for="operation-details">Operation Details:</label>
+                    <textarea id="operation-details" name="operation-details" rows="4" required></textarea>
+
+                    <button type="submit">Post Operation</button>
+                </form>
+            </div>
+        </div>
+        <div id="notifications" class="tab-content">
+            <div class="header">
+                <h1>Notifications</h1>
+            </div>
+            <div class="notifications" id="notifications-list">
+                <!-- Notifications will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                // Remove the active class from all links
+                document.querySelectorAll('.tab-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Remove the active class from all tab-content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Add the active class to the clicked link
+                this.classList.add('active');
+
+                // Show the corresponding tab content
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Handle appointment form submission
+        document.getElementById('appointment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const sickness = document.getElementById('sickness').value;
+            const days = document.getElementById('days').value;
+
+            // Create a new patient card
+            const patientCard = document.createElement('div');
+            patientCard.className = 'patient-card';
+            patientCard.innerHTML = `
+                <h3>${name}</h3>
+                <p>Email: ${email}</p>
+                <p>Sickness: ${sickness}</p>
+                <p>Days Experiencing: ${days}</p>
+                <button>View Profile</button>
+            `;
+
+            // Append the new patient card to the patient list
+            document.getElementById('patient-list').appendChild(patientCard);
+
+            // Clear the form
+            document.getElementById('appointment-form').reset();
+        });
+
+        // Handle doctor post form submission
+        document.getElementById('doctor-post-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get form values
+            const patientName = document.getElementById('patient-name').value;
+            const operationDetails = document.getElementById('operation-details').value;
+
+            // Create a new notification card
+            const notificationCard = document.createElement('div');
+            notificationCard.className = 'notification-card';
+            notificationCard.innerHTML = `
+                <h3>${patientName}</h3>
+                <p>Operation Details: ${operationDetails}</p>
+                <button>View Details</button>
+            `;
+
+            // Append the new notification card to the notifications list
+            document.getElementById('notifications-list').appendChild(notificationCard);
+
+            // Clear the form
+            document.getElementById('doctor-post-form').reset();
+        });
+
+        // Simulate doctor availability
+        function checkDoctorAvailability() {
+            // Simulating an API call or data fetch
+            setTimeout(() => {
+                const status = Math.random() > 0.5 ? 'Available' : 'Not Available';
+                document.getElementById('doctor-status').textContent = status;
+            }, 1000); // Simulate delay
+        }
+
+        // Check doctor availability on page load
+        checkDoctorAvailability();
+    </script>
+</body>
+</html>

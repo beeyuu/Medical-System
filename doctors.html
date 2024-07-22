@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <h2>Doctor</h2>
+            <p>doctor@example.com</p>
+        </div>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <li><a href="doctors.html" class="active">Doctors</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="appointment.html">Appointment</a></li>
+                    <li><a href="patients.html">Patients</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Doctors</h1>
+            <input type="text" placeholder="Search Patient...">
+            <button>Search</button>
+        </div>
+            <!-- Add more doctor cards as needed -->
+        </div>
+        <div class="doctor-status">
+            <h2>Doctor Availability</h2>
+            <p id="doctor-status">Checking availability...</p>
+            <form id="availability-form">
+                <label for="availability">Set Availability:</label>
+                <select id="availability" name="availability">
+                    <option value="available">Available</option>
+                    <option value="not-available">Not Available</option>
+                </select>
+                <button type="submit">Update Status</button>
+            </form>
+        </div>
+        <div class="next-patient-form">
+            <h2>Notify Next Patient</h2>
+            <form id="next-patient-form">
+                <label for="next-patient-name">Next Patient Name:</label>
+                <input type="text" id="next-patient-name" name="next-patient-name" required>
+
+                <label for="next-operation-details">Operation Details:</label>
+                <textarea id="next-operation-details" name="next-operation-details" rows="4" required></textarea>
+
+                <button type="submit">Notify Next Patient</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.menu ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                
+                // Remove the active class from all links
+                document.querySelectorAll('.menu ul li a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add the active class to the clicked link
+                this.classList.add('active');
+            });
+        });
+
+        // Handle doctor availability form submission
+        document.getElementById('availability-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the availability status
+            const availability = document.getElementById('availability').value;
+
+            // Update the availability status
+            document.getElementById('doctor-status').textContent = availability === 'available' ? 'Available' : 'Not Available';
+
+            // Optionally send the availability status to the server
+            // For example, you might use fetch to send the data
+            // fetch('update_availability.php', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: new URLSearchParams({ availability })
+            // });
+        });
+
+        // Handle next patient form submission
+        document.getElementById('next-patient-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get form values
+            const nextPatientName = document.getElementById('next-patient-name').value;
+            const nextOperationDetails = document.getElementById('next-operation-details').value;
+
+            // Create a new notification card for the next patient
+            const nextPatientNotification = document.createElement('div');
+            nextPatientNotification.className = 'notification-card';
+            nextPatientNotification.innerHTML = `
+                <h3>Next Patient: ${nextPatientName}</h3>
+                <p>Operation Details: ${nextOperationDetails}</p>
+                <button>View Details</button>
+            `;
+
+            // Optionally send the next patient notification to the server
+            // For example, you might use fetch to send the data
+            // fetch('notify_next_patient.php', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: new URLSearchParams({ nextPatientName, nextOperationDetails })
+            // });
+
+            // Clear the form
+            document.getElementById('next-patient-form').reset();
+        });
+    </script>
+</body>
+</html>

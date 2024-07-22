@@ -46,13 +46,32 @@ $conn->close();
             <p>itlog@gmail.com</p>
         </div>
         <nav>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Doctors</a></li>
-                <li><a href="#">Schedule</a></li>
-                <li><a href="#">Appointment</a></li>
-                <li><a href="#">Patients</a></li>
-                <li><a href="../logout.php">logout</a></li>
-            </ul>
+            <div class="menu">
+                <ul>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                    <li><a href="#">Doctors</a></li>
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Appointment</a></li>
+                    <li><a href="#">Patients</a></li>
+                    <li><a href="../logout.php">logout</a></li>
+                </ul>
+            </div>
         </nav>
     </div>
+    <script>
+        document.querySelectorAll('.menu ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                
+                // Remove the active class from all links
+                document.querySelectorAll('.menu ul li a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add the active class to the clicked link
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

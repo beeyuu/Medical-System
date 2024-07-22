@@ -1,1 +1,65 @@
-class="center" style="object-fit: contain;"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <h2>Doctor</h2>
+            <p>doctor@example.com</p>
+        </div>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <li><a href="doctors.html" class="active">Doctors</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="appointment.html">Appointment</a></li>
+                    <li><a href="patients.html">Patients</a></li>
+                    <li><a href="../logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Doctors</h1>
+            <input type="text" placeholder="Search Doctors...">
+            <button>Add Doctor</button>
+        </div>
+        <div class="doctor-list">
+            <div class="doctor-card">
+                <h3>Dr. John Doe</h3>
+                <p>Specialty: Cardiology</p>
+                <p>Contact: johndoe@example.com</p>
+                <button>View Profile</button>
+            </div>
+            <div class="doctor-card">
+                <h3>Dr. Jane Smith</h3>
+                <p>Specialty: Neurology</p>
+                <p>Contact: janesmith@example.com</p>
+                <button>View Profile</button>
+            </div>
+            <!-- Add more doctor cards as needed -->
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.menu ul li a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+                
+                // Remove the active class from all links
+                document.querySelectorAll('.menu ul li a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add the active class to the clicked link
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

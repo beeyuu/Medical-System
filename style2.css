@@ -69,3 +69,55 @@ body {
     border: none;
     cursor: pointer;
 }
+.menu {
+    
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    text-align: justify;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .menu li a.active,
+  .menu li a:hover {
+    background-color: #ddd;
+    color: #555;
+  }
+  
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  } 
+  
+  .menu li {
+    text-align: center;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .menu li a.active,
+  .menu li a:hover {
+    background-color: #ddd;
+    color: #555;
+  }
+  
+  
