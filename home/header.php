@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 // Include your database connection or any necessary files
-require '../dbconnect.php'; // Adjust path as necessary
+require_once '../dbconnect.php'; // Adjust path as necessary
 
 // Fetch user information from database based on session data
 $email = $_SESSION['email'];
@@ -38,6 +38,9 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="doctors.css">
+    <link rel="stylesheet" href="../buttons.css">
+    <link href="../output.css" rel="stylesheet">
 </head>
 <body>
     <div class="sidebar">
@@ -46,22 +49,22 @@ $conn->close();
             <p>itlog@gmail.com</p>
         </div>
         <nav>
-            <div class="menu">
-                <ul>
-                    <li><a href="#" class="active">Dashboard</a></li>
-                    <li><a href="#">Doctors</a></li>
-                    <li><a href="#">Schedule</a></li>
-                    <li><a href="#">Appointment</a></li>
-                    <li><a href="#">Patients</a></li>
-                    <li><a href="../logout.php">logout</a></li>
-                </ul>
-            </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="doctors.php">Doctors</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Appointment</a></li>
+                <li><a href="#">Patients</a></li>
+                <li><a href="../logout.php">logout</a></li>
+            </ul>
+        </div>
+
         </nav>
     </div>
     <script>
         document.querySelectorAll('.menu ul li a').forEach(link => {
             link.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
                 
                 // Remove the active class from all links
                 document.querySelectorAll('.menu ul li a').forEach(link => {
