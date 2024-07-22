@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
                 <a href="dashboard.php" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
             </li>
             <li>
-                <a href="patient.php" class="block py-2 px-4 rounded hover:bg-gray-700">Patients</a>
+                <a href="doctors.php" class="block py-2 px-4 rounded hover:bg-gray-700">Doctors</a>
             </li>
             <li>
                 <a href="appointment.php" class="block py-2 px-4 rounded hover:bg-gray-700">Appointment</a>
@@ -58,29 +58,7 @@ if ($result->num_rows > 0) {
             </li>
         </ul>
     </div>
+    
+   
 </body>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const daysInMonth = 31; // Change this based on the month
-    const firstDay = new Date(2024, 6, 1).getDay(); // Adjust the month and year
-    
-    const calendarBody = document.querySelector('.grid-cols-7 + .grid');
-    
-    // Add empty cells for alignment
-    for (let i = 0; i < firstDay; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('p-2', 'text-center');
-        calendarBody.appendChild(cell);
-    }
-    
-    // Add days
-    for (let day = 1; day <= daysInMonth; day++) {
-        const cell = document.createElement('div');
-        cell.classList.add('p-2', 'text-center');
-        cell.textContent = day;
-        calendarBody.appendChild(cell);
-    }
-});
-</script>
-
 </html>

@@ -32,7 +32,7 @@ if (isset($_POST['signin'])) {
                 } elseif ($user_type === 'doctor') {
                     header("Location: doctor/dashboard.php"); // Redirect to doctor dashboard
                 } else {
-                    header("Location: home/dashboard.php"); // Default dashboard
+                    header("Location: patient/dashboard.php"); // Default dashboard
                 }
                 exit(); // Ensure the script stops executing after the redirect
             } else {
