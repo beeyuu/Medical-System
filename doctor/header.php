@@ -48,9 +48,6 @@ if ($result->num_rows > 0) {
                 <a href="dashboard.php" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
             </li>
             <li>
-                <a href="doctors.php" class="block py-2 px-4 rounded hover:bg-gray-700">Doctors</a>
-            </li>
-            <li>
                 <a href="patient.php" class="block py-2 px-4 rounded hover:bg-gray-700">Patients</a>
             </li>
             <li>

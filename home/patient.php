@@ -1,12 +1,12 @@
 <?php include 'header.php';
-$sql = "SELECT * FROM doctor";
+$sql = "SELECT * FROM patient";
 $result = $conn->query($sql);
 ?>
 <div class="container mx-auto p-10">
     <!-- Button Container -->
     <div class="btn-container mb-4">
         <button id="open-modal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Add Doctor
+            Add Patient
         </button>
     </div>
     
@@ -15,7 +15,7 @@ $result = $conn->query($sql);
         <thead>
             <tr class="bg-gray-100">
                 <th class="border border-gray-300 px-4 py-2">ID</th>
-                <th class="border border-gray-300 px-4 py-2">Doctor's Name</th>
+                <th class="border border-gray-300 px-4 py-2">Patient's Name</th>
                 <th class="border border-gray-300 px-4 py-2">Doctor's Specialization</th>
                 <th class="border border-gray-300 px-4 py-2">Action</th>
             </tr>
@@ -28,8 +28,8 @@ $result = $conn->query($sql);
             ?>
             <tr class="bg-white">
                 <td class="border border-gray-300 px-4 py-2"><?= $row['id'] ?></td>
-                <td class="border border-gray-300 px-4 py-2"><?= $row['name'] ?><?= $row['lastname'] ?></td>
-                <td class="border border-gray-300 px-4 py-2"><?= $row['description'] ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?= $row['name'] ?></td>
+                <td class="border border-gray-300 px-4 py-2"><?= $row['contact'] ?></td>
                 <td class="border border-gray-300 px-4 py-2">
                 <form method='POST' action='update.php' class='inline'>
                     <input type='hidden' name='id' value='<?= $row['id'] ?>'>
@@ -63,27 +63,27 @@ $result = $conn->query($sql);
             <!-- Form or Content for Adding a Doctor -->
             <form method="post" action="actions.php">
                 <div class="mb-4">
-                    <label for="doctor-name" class="block text-gray-700">Doctor's Name</label>
+                    <label for="doctor-name" class="block text-gray-700">Patient's Name</label>
                     <input type="text" id="doctor-name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded" required>
                 </div>
                 <div class="mb-4">
-                    <label for="doctor-name" class="block text-gray-700">Doctor's Last Name</label>
-                    <input type="text" id="doctor-name" name="lastname" class="w-full px-3 py-2 border border-gray-300 rounded" required>
+                    <label for="doctor-name" class="block text-gray-700">Patient's Address</label>
+                    <input type="text" id="doctor-name" name="address" class="w-full px-3 py-2 border border-gray-300 rounded" required>
                 </div>
                 <div class="mb-4">
-                    <label for="doctor-name" class="block text-gray-700">Doctor's User Name</label>
+                    <label for="doctor-name" class="block text-gray-700">Patient's Contact Number</label>
+                    <input type="text" id="doctor-name" name="contact" class="w-full px-3 py-2 border border-gray-300 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="doctor-name" class="block text-gray-700">Patient's User Name</label>
                     <input type="text" id="doctor-name" name="username" class="w-full px-3 py-2 border border-gray-300 rounded" required>
                 </div>
                 <div class="mb-4">
-                    <label for="doctor-name" class="block text-gray-700">Doctor's Password</label>
+                    <label for="doctor-name" class="block text-gray-700">Patient's Password</label>
                     <input type="text" id="doctor-name" name="password" class="w-full px-3 py-2 border border-gray-300 rounded" required>
                 </div>
-                <div class="mb-4">
-                    <label for="specialization" class="block text-gray-700">Specialization</label>
-                    <input type="text" id="specialization" name="description" class="w-full px-3 py-2 border border-gray-300 rounded" required>
-                </div>
-                <button type="submit" name="addDoctor" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Save Doctor
+                <button type="submit" name="addPatient" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Save Patient
                 </button>
             </form>
         </div>

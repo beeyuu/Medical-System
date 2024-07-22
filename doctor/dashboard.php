@@ -1,6 +1,5 @@
-
-
-    <div class="content">
+<?php include 'header.php';?>
+<div class="content">
         <div class="header">
             <input type="text" placeholder="Search Doctor name or Email">
             <button>Search</button>
