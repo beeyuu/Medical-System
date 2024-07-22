@@ -1,5 +1,5 @@
 <?php include 'header.php';
-$sql = "SELECT * FROM doctor";
+$sql = "SELECT * FROM appointment";
 $result = $conn->query($sql);
 ?>
 <div class="container mx-auto p-10">
@@ -15,8 +15,7 @@ $result = $conn->query($sql);
         <thead>
             <tr class="bg-gray-100">
                 <th class="border border-gray-300 px-4 py-2">ID</th>
-                <th class="border border-gray-300 px-4 py-2">Doctor's Name</th>
-                <th class="border border-gray-300 px-4 py-2">Doctor's Specialization</th>
+                <th class="border border-gray-300 px-4 py-2">Description</th>
                 <th class="border border-gray-300 px-4 py-2">Action</th>
             </tr>
         </thead>
